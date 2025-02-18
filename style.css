@@ -25,3 +25,14 @@ body {
     grid-column: 1 / 3;
     text-align: center;
 }
+
+.shelf {
+    display: grid;
+    gap: 0.5rem;
+}
+
+.book {
+    display: grid;
+    grid-template-columns: auto 100px 100px;
+    gap: 15px;
+}
