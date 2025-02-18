@@ -4,10 +4,67 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Odin: Library</title>
-    <link href="./style.css">
+    <link rel="stylesheet" href="./style.css">
 </head>
 <body>
+    <div class="main">
+        <div class="container form">
+            <form action="" id="newBook"></form>
+                <div class="item">
+                    <label for="title">Title:
+                            <input type="text" name="title" id="title">
+                    </label>
+                </div>
+                <div class="item">
+                    <label for="author">Author:
+                            <input type="text" name="author" id="author">
+                    </label>
+                </div>
+                <div class="item">
+                    <label for="pages">Pages:
+                            <input type="text" name="pages" id="pages">
+                    </label>
+                </div>
+                <div class="item">
+                    Read?
+                    <div>
+                        <label for="readYes">
+                            <input type="radio" name="read" id="readYes" value="true">
+                            Yes I've read!
+                        </label>
+                    </div>
+                    <div>
+                        <label for="readNo">
+                            <input type="radio" name="read" id="readNo" value="false">
+                            No I haven't read..
+                        </label>
+                    </div>
+                </div>
+                <div class="item">
+                    <button type="submit" id="buttonSave">Save Book</button>
+                </div>
+        
+                <div class="item">
+                    <button type="reset" id="buttonClear">Clear</button>
+                </div>
+
+                <div class="item">
+                    <button id="buttonRefresh">Refresh Library</button>
+                </div>
+            </form>
+        </div>
+        
+        <div class="container library">
+            <h2>Library</h2>
+            <div class="shelf">
+            </div>
+        </div>
+    </div>
+
+    <div class="footer">
+        <a href="https://www.theodinproject.com/lessons/node-path-javascript-objects-and-object-constructors">Odin Project Link</a>
+    </div>
+
     <script src="./javascript.js"></script>
-    <a href="https://www.theodinproject.com/lessons/node-path-javascript-objects-and-object-constructors">Odin Project Link</a>
 </body>
 </html>
