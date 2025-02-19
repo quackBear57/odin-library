@@ -1,18 +1,17 @@
 const myLibrary = [];
 
-function Book(title, author, pages, read, shelfIndex) {
+function Book(title, author, pages, read) {
     this.title = title;
     this.author = author;
     this.pages = pages;
     this.read = read;
-    this.shelfIndex = shelfIndex;
     this.info = function() {
         if (this.read == false) {
             return (`${this.title} by ${this.author}, ${pages}  pages, ` + 
-            `not read yet, index ${this.shelfIndex}`)
+            `not read yet`)
         } else {
             return (`${this.title} by ${this.author}, ${pages}  pages, ` + 
-                `alredy read, index ${this.shelfIndex}`)
+                `alredy read`)
         };
     };
     this.toggleRead = function () {
@@ -108,11 +107,12 @@ const buttonSave = document.querySelector("#buttonSave");
 const buttonClear = document.querySelector('#buttonClear');
 
 buttonSave.addEventListener("click", saveBook, false);
-buttonRefresh.addEventListener('click', refreshLibrary());
 buttonClear.addEventListener('click', clearForm());
 
-const theHobbit = new Book('The Hobbit','J.R.R. Tolkien',295,false, myLibrary.length);
+// Start out with two manual additions
+const theHobbit = new Book('The Hobbit','J.R.R. Tolkien',295,false);
 addBookToLibrary(theHobbit);
-const book2 = new Book('Book Two','Mr. Author',100,true, myLibrary.length);
+const book2 = new Book('Book Two','Mr. Author',100,true);
 addBookToLibrary(book2);
+
 refreshLibrary();
