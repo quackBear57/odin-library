@@ -10,20 +10,24 @@
     <div class="main">
         <div class="container form">
             <form action="" id="newBook"></form>
-                <div class="item">
-                    <label for="title">Title:
-                            <input type="text" name="title" id="title">
-                    </label>
+                <legend>Book Info</legend>
+                <div class="label">
+                    <label for="title">Title:</label>                    
                 </div>
                 <div class="item">
-                    <label for="author">Author:
-                            <input type="text" name="author" id="author">
-                    </label>
+                    <input type="text" name="title" id="title">
+                </div>
+                <div class="label">
+                    <label for="author">Author:</label>
                 </div>
                 <div class="item">
-                    <label for="pages">Pages:
-                            <input type="text" name="pages" id="pages">
-                    </label>
+                    <input type="text" name="author" id="author">
+                </div>
+                <div class="label">
+                    <label for="pages">Pages:</label>
+                </div>
+                <div class="item">
+                    <input type="text" name="pages" id="pages">
                 </div>
                 <div class="item">
                     Read?
@@ -59,8 +63,10 @@
             <div class="shelf">
                 <div class="book">
                     <div>text</div>
-                    <button>Read/Unread</button>
-                    <button>Delete</button>
+                    <div>
+                        <button>Read/Unread</button>
+                        <button>Delete</button>
+                    </div>
                 </div>
             </div>
         </div>

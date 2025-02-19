@@ -15,6 +15,13 @@ function Book(title, author, pages, read, shelfIndex) {
                 `alredy read, index ${this.shelfIndex}`)
         };
     };
+    this.toggleRead = function () {
+        if (this.read == true) {
+            this.read = false;
+        } else {
+            this.read = true;
+        }
+    }
 }
 
 function addBookToLibrary(book) {
@@ -31,19 +38,35 @@ function refreshLibrary() {
     for (let i = 0; i < myLibrary.length; i++) {
         const bookDiv = document.createElement('div');
         bookDiv.classList = "book";
+        bookDiv.setAttribute('data-value', i);
         const buttonRead = document.createElement('button');
         const buttonDelete = document.createElement('button');
 
-        buttonRead.addEventListener('click', () => {
-            console.log(`${this.shelfIndex}`);
-        });
         buttonRead.textContent = "Read/Unread";
+        buttonRead.addEventListener('click', () => {
+            const indexToChange = document.
+                querySelector(`[data-value="${i}"]`).
+                getAttribute("data-value");
+            myLibrary[indexToChange].toggleRead();
+            refreshLibrary();
+        })
+
+        buttonDelete.textContent = "Delete";
+        buttonDelete.addEventListener('click', () => {
+            const indexToDelete = document.
+                querySelector(`[data-value="${i}"]`).
+                getAttribute("data-value");
+            deleteBook(indexToDelete);
+            refreshLibrary();
+        });
         
         const bookText = document.createElement('div');
         bookText.textContent = myLibrary[i].info();
         bookDiv.appendChild(bookText);
         bookDiv.appendChild(buttonRead);
+        bookDiv.appendChild(buttonDelete);
         shelf.appendChild(bookDiv);
+        shelf.appendChild(document.createElement("hr"));
     }
 }
 
@@ -62,10 +85,15 @@ function saveBook(event) {
 
     const newBook = new Book(title, author, pages, read, shelfIndex);
     addBookToLibrary(newBook);
-    refreshLibrary;
-    clearForm;
+    refreshLibrary();
+    clearForm();
 
     event.preventDefault();
+}
+
+function deleteBook(index) {
+    myLibrary.splice(index, 1);
+    console.log(`deleted index ${index}`);
 }
 
 function clearForm() {
@@ -80,10 +108,11 @@ const buttonSave = document.querySelector("#buttonSave");
 const buttonClear = document.querySelector('#buttonClear');
 
 buttonSave.addEventListener("click", saveBook, false);
-buttonRefresh.addEventListener('click', refreshLibrary);
-buttonClear.addEventListener('click', clearForm);
+buttonRefresh.addEventListener('click', refreshLibrary());
+buttonClear.addEventListener('click', clearForm());
 
 const theHobbit = new Book('The Hobbit','J.R.R. Tolkien',295,false, myLibrary.length);
 addBookToLibrary(theHobbit);
 const book2 = new Book('Book Two','Mr. Author',100,true, myLibrary.length);
 addBookToLibrary(book2);
+refreshLibrary();
